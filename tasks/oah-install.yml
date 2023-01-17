@@ -1,0 +1,6 @@
+---
+- name: Installing Apache Ant
+  become: yes
+  apt:
+    name: ant="{{ ant_version }}"
+    state: installed

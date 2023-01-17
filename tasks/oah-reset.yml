@@ -1,0 +1,25 @@
+---
+- name: Removing package
+  ansible.builtin.include_tasks: oah-remove.yml
+  
+- name: Getting default conf.
+  become: yes
+  ansible.builtin.git:
+    repo: 'https://github.com/asa1997/ansible-role-oah-ant.git'
+    dest: '{{ ant_tmp }}'
+    clone: yes
+
+- name: Resetting default conf.
+  ansible.builtin.copy:
+    src: "{{ ant_tmp }}/defaults/main.yml"
+    dest: "{{ role_path }}/defaults/main.yml"
+    remote_src: yes
+
+- name: Cleaning up
+  become: yes
+  file:
+    path: "{{ ant_tmp }}"
+    state: absent
+  
+- name: Installing package
+  ansible.builtin.include_tasks: oah-install.yml

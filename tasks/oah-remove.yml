@@ -1,0 +1,7 @@
+---
+- name: Remove Ant
+  become: yes
+  ansible.builtin.apt:
+    name:
+      - ant
+    state: absent

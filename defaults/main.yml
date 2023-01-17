@@ -1,0 +1,4 @@
+---
+# defaults file for ansible-role-oah-ant
+ant_version: "1.10.12"
+ant_tmp: "{{ home_dir }}/ant_tmp"

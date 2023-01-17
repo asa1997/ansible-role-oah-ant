@@ -1,0 +1,10 @@
+---
+- name: Removing current installation
+  ansible.builtin.include_tasks: oah-install.yml
+    
+- name: Update Ant version
+  ansible.builtin.apt:
+    name:
+      - ant="{{ ant_version }}"
+    state: present
+    
